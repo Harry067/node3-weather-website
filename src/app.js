@@ -9,7 +9,9 @@ const forecast2 = require("./utils/forecast");
 dotenv.config({ path: "./config.env" });
 const app = express();
 
-app.use(cors());
+const port = process.env.PORT || 3000;
+
+// app.use(cors());
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, "../public");
@@ -24,7 +26,7 @@ hbs.registerPartials(partialsPath);
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath));
 
-console.log(process.env);
+// console.log(process.env);
 
 app.get("", (req, res) => {
   res.render("index", {
@@ -104,6 +106,6 @@ app.get("*", (req, res) => {
 
 const portNum = process.env.PORT;
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is up on port ${process.env.PORT}`);
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
 });
