@@ -51,7 +51,7 @@ app.get("/help", (req, res) => {
 });
 
 app.get("/weather", (req, res) => {
-  console.log(req.query.address);
+  console.log(req.query.location);
 
   if (!req.query.address) {
     return res.send({
